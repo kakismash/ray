@@ -1,0 +1,28 @@
+<div class="fullHeight">
+    <mat-toolbar color="primary" style="height: 6%;">
+        <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+        <mat-spinner *ngIf="loading"></mat-spinner>
+        <span *ngIf="!loading && !selectedStore">No existen Tiendas</span>
+        <button *ngIf="selectedStore" [hidden]="loading" mat-raised-button [matMenuTriggerFor]="menu" color="primary" (click)="onStoreChange()">{{selectedStore.name}}</button>
+        <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
+            <button *ngFor="let store of stores" mat-menu-item>{{store.name}}</button>
+        </mat-menu>
+    </mat-toolbar>
+    <mat-drawer-container autosize style="height: 94%;">
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+            <mat-list>
+                <mat-list-item> <button routerLink="/admin/store" mat-button><mat-icon >home</mat-icon> Store</button> </mat-list-item>
+                <mat-list-item> <button routerLink="/admin/category" mat-button><mat-icon >home</mat-icon> Category</button> </mat-list-item>
+                <mat-list-item> <button routerLink="/admin/item" mat-button><mat-icon >home</mat-icon> Item</button> </mat-list-item>
+                <mat-list-item> <button routerLink="/admin/user" mat-button><mat-icon >home</mat-icon> User</button> </mat-list-item>
+            </mat-list>
+        </mat-drawer>
+        <mat-drawer-content>
+            <mat-card style="height: -webkit-fill-available; margin: 15px;">
+                <router-outlet></router-outlet>
+            </mat-card>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

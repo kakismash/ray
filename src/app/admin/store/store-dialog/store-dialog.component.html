@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>{{store && store.id ? 'Editar' : 'Crear'}} Tienda </h1>
+<div mat-dialog-content>
+    <form class="form-class">
+        <mat-form-field class="full-width">
+            <input name="storeName" matInput placeholder="Nombre de la Tienda" [(ngModel)]="store.name">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <textarea name="storeNoAbout" matInput placeholder="Acerca de la Tienda" [(ngModel)]="store.about"></textarea>
+        </mat-form-field>
+
+        <div class="full-width">
+            <input name="storeLogo" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
+            <div class="full-width" style="display: flex;">
+                <img style="max-width: 70%; max-height: 100px;" *ngIf="store.logo" [src]="store.logo" alt="">
+                <h5 *ngIf="!store.logo">No file uploaded yet.</h5>
+                <button style="margin: auto;" mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                  <mat-icon>attach_file</mat-icon>
+              </button>
+            </div>
+            <div class="progress">
+                <mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
+                <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
+            </div>
+        </div>
+        <mat-form-field class="full-width">
+            <input name="storePhone" matInput placeholder="Telefono de la Tienda" [(ngModel)]="store.phone">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input name="storeEmail" matInput placeholder="Correo de la Tienda" [(ngModel)]="store.email">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input name="storeAddress" matInput placeholder="Direccion de la Tienda" [(ngModel)]="store.address">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input name="storeFacebook" matInput placeholder="Facebook de la Tienda" [(ngModel)]="store.facebook">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button style="margin-right: auto;" color="warn" mat-raised-button (click)="onClose()">Cerrar</button>
+    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!store.name" (click)="onSave()" cdkFocusInitial>Guardar</button>
+</div>
