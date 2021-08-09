@@ -10,11 +10,10 @@ import { StoreService } from 'src/service/store.service';
 })
 export class AdminComponent implements OnInit {
 
-  showFiller = false;
-  stores: Array<Store> = [];
-  selectedStore!: Store;
-  loading: boolean = false;
-
+  showFiller:                       boolean          = false;
+  stores:                           Array<Store>     = new Array<Store>();
+  selectedStore!:                   Store;
+  loading:                          boolean          = false;
   @ViewChild(MatMenuTrigger) menu?: MatMenuTrigger;
 
   constructor(private storeService: StoreService) {}
