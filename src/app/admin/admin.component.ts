@@ -35,7 +35,9 @@ export class AdminComponent implements OnInit {
         .subscribe(rStores => {
           this.stores = rStores;
           if (!this.selectedStore && this.stores && this.stores.length > 0) {
-            this.sessionStorageService.save(this.stores[0]);
+            const o: Store = new Store();
+            Object.assign(o, this.stores[0])
+            this.sessionStorageService.save(o);
             this.selectedStore = this.stores[0];
           }
           if (needMenuOpen) {

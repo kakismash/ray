@@ -27,6 +27,7 @@ export class SessionStorageService {
   }
 
   save(obj: Store | User): void {
+    debugger
     if (obj instanceof Store) {
       sessionStorage.setItem('store', JSON.stringify(obj));
     } else {
