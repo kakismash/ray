@@ -17,8 +17,8 @@ export class AdminComponent implements OnInit {
   loading:                          boolean          = false;
   @ViewChild(MatMenuTrigger) menu?: MatMenuTrigger;
 
-  constructor(private storeService: StoreService,
-              private sessionStorageService: SessionStorageService) {}
+  constructor(private storeService:          StoreService,
+              private sessionStorageService: SessionStorageService) { }
 
   ngOnInit(): void {
     this.loadStores(false);

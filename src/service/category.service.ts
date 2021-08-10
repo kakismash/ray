@@ -13,7 +13,7 @@ export class CategoryService {
   constructor(private http: HttpClient) {}
 
   getAllByStore(storeId: number): Observable<Array<Category>> {
-    return this.http.get<Category[]>(environment.apiURL + 'store/' + storeId + '/category')
+    return this.http.get<Array<Category>>(environment.apiURL + 'store/' + storeId + '/category')
   }
 
   createOrEditAndAttachToStore(storeId: number, category: Category): Observable<Store> {

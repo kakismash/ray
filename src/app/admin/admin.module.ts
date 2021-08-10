@@ -26,6 +26,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CategoryDialogComponent } from './category/category-dialog/category-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     StoreComponent,
     ItemComponent,
     AdminComponent,
-    StoreDialogComponent
+    StoreDialogComponent,
+    CategoryDialogComponent
   ],
   imports: [
     CommonModule,
