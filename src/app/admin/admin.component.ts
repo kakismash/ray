@@ -13,7 +13,6 @@ export class AdminComponent implements OnInit {
 
   showFiller:                       boolean          = false;
   stores:                           Array<Store>     = new Array<Store>();
-  selectedStore!:                   Store;
   loading:                          boolean          = false;
   @ViewChild(MatMenuTrigger) menu?: MatMenuTrigger;
 
@@ -28,17 +27,20 @@ export class AdminComponent implements OnInit {
     this.loadStores(true);
   }
 
+  getStoreInSession(): Store {
+    return this.sessionStorageService.loadStore();
+  }
+
   loadStores(needMenuOpen: boolean): void {
     this.loading = true;
     this.storeService
         .getAll()
         .subscribe(rStores => {
           this.stores = rStores;
-          if (!this.selectedStore && this.stores && this.stores.length > 0) {
+          if (this.stores && this.stores.length > 0) {
             const o: Store = new Store();
             Object.assign(o, this.stores[0])
             this.sessionStorageService.save(o);
-            this.selectedStore = this.stores[0];
           }
           if (needMenuOpen) {
             this.menu?.openMenu();
