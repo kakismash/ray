@@ -1,8 +1,8 @@
-import { SessionStorageService } from './../../service/session-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from 'src/model/store.model';
+import { SessionStorageService } from 'src/service/session-storage.service';
 import { StoreService } from 'src/service/store.service';
 import { StoreDialogComponent } from './store-dialog/store-dialog.component';
 
@@ -19,7 +19,7 @@ export class StoreComponent implements OnInit {
   constructor(public dialog:          MatDialog,
               private _snackBar:      MatSnackBar,
               private storeService:   StoreService,
-              private sessionStorage: SessionStorageService) { }
+              private sessionStorageService: SessionStorageService) { }
 
   ngOnInit(): void {
     this.initStores();
@@ -52,7 +52,6 @@ export class StoreComponent implements OnInit {
                     .open('Tienda Creada!', 'Ok', {
                       duration: 3 * 1000,
                     });
-                this.sessionStorage.saveStore(store.name, JSON.stringify(store));
               }, err => {
                 console.log(err);
                 this._snackBar
@@ -102,7 +101,6 @@ export class StoreComponent implements OnInit {
               .open('Tienda Eliminada!', 'Ok', {
                 duration: 3 * 1000,
               });
-          this.sessionStorage.removeStore(store.name);
         }, err => {
           console.log(err);
           this._snackBar
