@@ -7,7 +7,7 @@
         <span *ngIf="!loading && !getStoreInSession()">No existen Tiendas</span>
         <button *ngIf="getStoreInSession()" [hidden]="loading" mat-raised-button [matMenuTriggerFor]="menu" color="primary" (click)="onStoreChange()">{{getStoreInSession().name}}</button>
         <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
-            <button *ngFor="let store of stores" mat-menu-item>{{store.name}}</button>
+            <button *ngFor="let store of stores" mat-menu-item (click)="changeStore(store)">{{store.name}}</button>
         </mat-menu>
     </mat-toolbar>
     <mat-drawer-container autosize style="height: 94%;">

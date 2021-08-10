@@ -13,11 +13,9 @@ export class StoreDialogComponent {
   uploadProgress:   boolean = false;
   requiredFileType: string  = 'image/png';
 
-  constructor(
-    public dialogRef:                     MatDialogRef<StoreDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Store,
-    public bucketService:                 BucketService
-  ) {
+  constructor(public dialogRef:                     MatDialogRef<StoreDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Store,
+              public bucketService:                 BucketService) {
 
     this.initStore();
 

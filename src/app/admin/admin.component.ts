@@ -23,6 +23,12 @@ export class AdminComponent implements OnInit {
     this.loadStores(false);
   }
 
+  changeStore(store: Store): void {
+    const o: Store = new Store();
+    Object.assign(o, store);
+    this.sessionStorageService.save(o);
+  }
+
   onStoreChange(): void {
     this.loadStores(true);
   }
@@ -39,7 +45,7 @@ export class AdminComponent implements OnInit {
           this.stores = rStores;
           if (this.stores && this.stores.length > 0) {
             const o: Store = new Store();
-            Object.assign(o, this.stores[0])
+            Object.assign(o, this.stores[0]);
             this.sessionStorageService.save(o);
           }
           if (needMenuOpen) {
