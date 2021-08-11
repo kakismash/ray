@@ -120,7 +120,7 @@ export class ItemComponent implements OnInit {
                   }
                 }
                 this._snackBar
-                    .open('Item Actualizadp!', 'Ok', {
+                    .open('Item Actualizado!', 'Ok', {
                       duration: 3 * 1000,
                     });
               }, err => {
