@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdminRoutingModule } from './admin-routing.module';
 import { UserComponent } from './user/user.component';
 import { CategoryComponent } from './category/category.component';
@@ -9,8 +8,7 @@ import { ItemComponent } from './item/item.component';
 import { AdminComponent } from './admin.component';
 import { StoreDialogComponent } from './store/store-dialog/store-dialog.component';
 import { CategoryDialogComponent } from './category/category-dialog/category-dialog.component';
-
-
+import { ItemDialogComponent } from './item/item-dialog/item-dialog.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,7 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
     ItemComponent,
     AdminComponent,
     StoreDialogComponent,
-    CategoryDialogComponent
+    CategoryDialogComponent,
+    ItemDialogComponent
   ],
   imports: [
     CommonModule,
