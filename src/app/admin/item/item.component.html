@@ -1,1 +1,40 @@
-<p>item works!</p>
+<mat-card-title>
+    <mat-form-field appearance="legacy">
+        <mat-label>Seleccione una categoria</mat-label>
+        <mat-select (selectionChange)="onSelectionChange($event)">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button (click)="openItemDialog()" style="float: right;" mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+</mat-card-title>
+<mat-card-content style="height: 87%;">
+    <div *ngIf="categorySelected === undefined">Seleccione una categoria para trabajar con items</div>
+    <mat-card style="height: 80%;" *ngIf="categorySelected !== undefined">
+        <mat-accordion>
+            <mat-expansion-panel matRipple *ngFor="let item of items">
+                <mat-expansion-panel-header>
+                    <mat-panel-title style="display: flex;">
+                        <div style="margin: auto;">
+                            {{item.name}}
+                        </div>
+                        <button (click)="onEdit($event, item)" style="margin: auto;" mat-icon-button color="accent">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                        <button (click)="onDelete($event, item)" style="margin: auto;" mat-icon-button color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <img style="height: 40px;" [src]="item.image" alt="">
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card>
+</mat-card-content>

@@ -8,6 +8,7 @@ import { StoreComponent } from './store/store.component';
 import { ItemComponent } from './item/item.component';
 import { AdminComponent } from './admin.component';
 import { StoreDialogComponent } from './store/store-dialog/store-dialog.component';
+import { CategoryDialogComponent } from './category/category-dialog/category-dialog.component';
 
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -26,7 +27,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CategoryDialogComponent } from './category/category-dialog/category-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { CategoryDialogComponent } from './category/category-dialog/category-dia
     MatRippleModule,
     MatMenuModule,
     MatProgressBarModule,
+    MatSelectModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
     FormsModule
