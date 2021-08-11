@@ -1,0 +1,18 @@
+<div class="signin-content">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="options">
+        <p>Entrar al sistema</p>
+        <mat-form-field class="full-width-input">
+          <input [(ngModel)]="user.email" matInput placeholder="Correo" [formControl]="emailControl" required>
+          <mat-error *ngIf="emailControl.hasError('required')">Por favor inserte su correo</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input [(ngModel)]="user.password" matInput type="password" placeholder="Password" [formControl]="passwordControl" required>
+          <mat-error *ngIf="passwordControl.hasError('required')">Por favor inserte su contraseña</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

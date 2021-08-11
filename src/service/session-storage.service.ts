@@ -40,6 +40,18 @@ export class SessionStorageService {
     return category;
   }
 
+  loadUser(): User {
+    const user: User = new User();
+    const strString = sessionStorage.getItem('user');
+
+    if (strString) {
+      const jsonStore = JSON.parse(strString);
+      Object.assign(user, jsonStore);
+    }
+
+    return user;
+  }
+
   save(obj: Store | User | Category): void {
     if (obj instanceof Store) {
       sessionStorage.setItem('store', JSON.stringify(obj));
