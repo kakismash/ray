@@ -1,0 +1,10 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  {{theme | titlecase }}
+</button>
+<mat-menu #menu="matMenu">
+    <ng-container *ngFor="let style of styles">
+        <button (click)="onSelectionChange(style)" mat-menu-item *ngIf="style.toLowerCase() !== theme">
+        <span >{{style}}</span>
+      </button>
+    </ng-container>
+</mat-menu>

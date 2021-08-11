@@ -26,7 +26,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ThemeSwitchComponent } from './theme-switch-component/theme-switch-component.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatSelectModule } from '@angular/material/select';
     AdminComponent,
     StoreDialogComponent,
     CategoryDialogComponent,
-    ItemDialogComponent
+    ItemDialogComponent,
+    ThemeSwitchComponent
   ],
   imports: [
     CommonModule,
@@ -56,6 +58,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatRippleModule,
     MatMenuModule,
     MatProgressBarModule,
+    MatButtonToggleModule,
     MatSelectModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
