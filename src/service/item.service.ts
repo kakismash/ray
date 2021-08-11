@@ -16,8 +16,8 @@ export class ItemService {
     return this.http.get<Item[]>(environment.apiURL + 'category/' + categoryId + '/item')
   }
 
-  createOrEditAndAttachToCategory(categoryId: number, item: Item): Observable<Category> {
-    return this.http.put<Category>(environment.apiURL + 'category/' + categoryId + '/item', item);
+  createOrEditAndAttachToCategory(categoryId: number, item: Item): Observable<Item> {
+    return this.http.put<Item>(environment.apiURL + 'category/' + categoryId + '/item', item);
   }
 
   removeFromCategory(categoryId: number, itemId: number): Observable<Category> {

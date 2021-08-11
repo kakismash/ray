@@ -66,11 +66,12 @@ export class ItemComponent implements OnInit {
 
   onDelete(event: MouseEvent | TouchEvent, item: Item) {
     event?.stopPropagation();
+    const cat = this.categorySelected ? this.categorySelected : new Category();
     this.itemService
-        .removeFromCategory(this.categorySelected.id, item.id)
+        .removeFromCategory(cat.id, item.id)
         .subscribe(r => {
           console.log(r);
-          this.loadItems(this.categorySelected.id);
+          this.loadItems(cat.id);
           this._snackBar
               .open('Item Eliminado!', 'Ok', {
                 duration: 3 * 1000,
@@ -108,8 +109,9 @@ export class ItemComponent implements OnInit {
                     });
               })
         } else {
+          const cat = this.categorySelected ? this.categorySelected : new Category();
           this.itemService
-              .createOrEditAndAttachToCategory(this.categorySelected.id, item)
+              .createOrEditAndAttachToCategory(cat.id, item)
               .subscribe(rItem => {
                 for (let a = 0; a < this.items.length; a++) {
                   if (this.items[a].id === rItem.id) {
