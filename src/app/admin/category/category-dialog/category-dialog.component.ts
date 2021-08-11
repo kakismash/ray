@@ -15,13 +15,16 @@ export class CategoryDialogComponent implements OnInit {
   store:            Store    = new Store();
   category:         Category = new Category();
   uploadProgress:   boolean  = false;
-  requiredFileType: string   = 'image/png';
+  requiredFileType: string   = 'image/x-png, image/gif, image/jpeg';
 
   constructor(public dialogRef:                     MatDialogRef<CategoryDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Store,
+              @Inject(MAT_DIALOG_DATA) public data: {store: Store, category: Category},
               public bucketService:                 BucketService) {
 
-    Object.assign(this.store, data);
+    Object.assign(this.store, data.store);
+    if (data.category && data.category.id) {
+      Object.assign(this.category, data.category);
+    }
   }
 
   ngOnInit(): void {

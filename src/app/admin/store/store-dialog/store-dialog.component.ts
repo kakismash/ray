@@ -11,7 +11,7 @@ import { BucketService } from 'src/service/bucket.service';
 export class StoreDialogComponent {
   store:            Store   = new Store();
   uploadProgress:   boolean = false;
-  requiredFileType: string  = 'image/png';
+  requiredFileType: string  = 'image/x-png, image/gif, image/jpeg';
 
   constructor(public dialogRef:                     MatDialogRef<StoreDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Store,

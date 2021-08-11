@@ -42,14 +42,15 @@ export class CategoryComponent implements OnInit {
         });
   }
 
-  openCategoryDialog(): void {
+  openCategoryDialog(category?: Category): void {
     const dialogRef = this.dialog.open(CategoryDialogComponent, {
-                        data: this.store
+                        data: {store: this.store, category: category}
                       });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         const category: Category = result;
-        this.categoryService
+        if (category && !category.id) {
+          this.categoryService
               .createOrEditAndAttachToStore(this.store.id, category)
               .subscribe(rCategory => {
                 this.categories.push(rCategory);
@@ -64,17 +65,55 @@ export class CategoryComponent implements OnInit {
                       duration: 3 * 1000,
                     });
               })
-
+        } else {
+          this.categoryService
+              .createOrEditAndAttachToStore(this.store.id, category)
+              .subscribe(rCategory => {
+                for (let a = 0; a < this.categories.length; a++) {
+                  if (this.categories[a].id === rCategory.id) {
+                    this.categories[a] = rCategory;
+                    break;
+                  }
+                }
+                this._snackBar
+                    .open('Categoría Actualizada!', 'Ok', {
+                      duration: 3 * 1000,
+                    });
+              }, err => {
+                console.log(err);
+                this._snackBar
+                    .open('Upss, Algo fue mal!', 'Ok', {
+                      duration: 3 * 1000,
+                    });
+              });
+        }
       }
     })
   }
 
   onEdit(event: MouseEvent | TouchEvent, category: Category): void {
-
+    event.stopPropagation();
+    this.openCategoryDialog(category);
   }
 
   onDelete(event: MouseEvent | TouchEvent, category: Category): void {
-
+    event?.stopPropagation();
+    this.categoryService
+        .removeFromStore(this.store.id, category.id)
+        .subscribe(r => {
+          console.log(r);
+          this.initCategories();
+          this._snackBar
+              .open('Categoría Eliminada!', 'Ok', {
+                duration: 3 * 1000,
+              });
+        }, err => {
+          console.log(err);
+          this._snackBar
+              .open('Upss, Algo fue mal!', 'Ok', {
+                duration: 3 * 1000,
+              });
+        });
   }
 
 }

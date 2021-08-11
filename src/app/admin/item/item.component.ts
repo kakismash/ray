@@ -1,3 +1,6 @@
+import { ItemDialogComponent } from './item-dialog/item-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/model/category.model';
 import { Item } from 'src/model/item.model';
@@ -13,11 +16,14 @@ import { SessionStorageService } from 'src/service/session-storage.service';
 export class ItemComponent implements OnInit {
 
   categorySelected?: Category;
-  categories: Array<Category> = [];
-  items: Array<Item> = [];
-  constructor(private readonly categoryService: CategoryService,
-              private readonly itemService: ItemService,
-              private readonly sessionStorageService: SessionStorageService) { }
+  categories:        Array<Category> = new Array<Category>();
+  items:             Array<Item>     = new Array<Item>();
+
+  constructor(private readonly categoryService:       CategoryService,
+              private readonly itemService:           ItemService,
+              private readonly sessionStorageService: SessionStorageService,
+              public  dialog:                         MatDialog,
+              private _snackBar:                      MatSnackBar) { }
 
   ngOnInit(): void {
     this.loadCategories();
@@ -54,15 +60,77 @@ export class ItemComponent implements OnInit {
   }
 
   onEdit(event: MouseEvent | TouchEvent,  item: Item) {
-
+    event.stopPropagation();
+    this.openItemDialog(item);
   }
 
   onDelete(event: MouseEvent | TouchEvent, item: Item) {
-
+    event?.stopPropagation();
+    this.itemService
+        .removeFromCategory(this.categorySelected.id, item.id)
+        .subscribe(r => {
+          console.log(r);
+          this.loadItems(this.categorySelected.id);
+          this._snackBar
+              .open('Item Eliminado!', 'Ok', {
+                duration: 3 * 1000,
+              });
+        }, err => {
+          console.log(err);
+          this._snackBar
+              .open('Upss, Algo fue mal!', 'Ok', {
+                duration: 3 * 1000,
+              });
+        });
   }
 
   openItemDialog(item?: Item): void {
-
+    const dialogRef = this.dialog.open(ItemDialogComponent, {
+                        data: {category: this.categorySelected, item: item}
+                      });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const item: Item = result;
+        if (item && !item.id && this.categorySelected) {
+          this.itemService
+              .createOrEditAndAttachToCategory(this.categorySelected.id, item)
+              .subscribe(rItem => {
+                this.items.push(rItem);
+                this._snackBar
+                    .open('Item Creado!', 'Ok', {
+                      duration: 3 * 1000,
+                    });
+              }, err => {
+                console.log(err);
+                this._snackBar
+                    .open('Upss, Algo fue mal!', 'Ok', {
+                      duration: 3 * 1000,
+                    });
+              })
+        } else {
+          this.itemService
+              .createOrEditAndAttachToCategory(this.categorySelected.id, item)
+              .subscribe(rItem => {
+                for (let a = 0; a < this.items.length; a++) {
+                  if (this.items[a].id === rItem.id) {
+                    this.items[a] = rItem;
+                    break;
+                  }
+                }
+                this._snackBar
+                    .open('Item Actualizadp!', 'Ok', {
+                      duration: 3 * 1000,
+                    });
+              }, err => {
+                console.log(err);
+                this._snackBar
+                    .open('Upss, Algo fue mal!', 'Ok', {
+                      duration: 3 * 1000,
+                    });
+              });
+        }
+      }
+    })
   }
 
 }
