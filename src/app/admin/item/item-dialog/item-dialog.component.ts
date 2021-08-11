@@ -1,3 +1,4 @@
+import { Category } from './../../../../model/category.model';
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Item } from 'src/model/item.model';
@@ -9,18 +10,20 @@ import { BucketService } from 'src/service/bucket.service';
   styleUrls: ['./item-dialog.component.scss'],
 })
 export class ItemDialogComponent {
-  item:            Item   = new Item();
-  uploadProgress:   boolean = false;
-  requiredFileType: string  = 'image/png';
+  item:             Item     = new Item();
+  uploadProgress:   boolean  = false;
+  requiredFileType: string   = 'image/x-png, image/gif, image/jpeg';
+  category:         Category = new Category();
 
   constructor(public dialogRef:                     MatDialogRef<ItemDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Item,
+              @Inject(MAT_DIALOG_DATA) public data: {category: Category, item: Item},
               public bucketService:                 BucketService) {
 
     this.initItem();
 
-    if (data && data.id) {
-      Object.assign(this.item, data);
+    Object.assign(this.category, data.category);
+    if (data.item && data.item.id) {
+      Object.assign(this.item, data.item);
     }
   }
 
@@ -38,6 +41,8 @@ export class ItemDialogComponent {
   }
 
   onSave(): void {
+    this.item.category = new Category();
+    this.item.category = this.category;
     this.dialogRef.close(this.item);
   }
 

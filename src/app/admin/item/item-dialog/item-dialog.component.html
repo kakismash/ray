@@ -1,12 +1,12 @@
-<h1 mat-dialog-title>{{item && item.id ? 'Editar' : 'Crear'}} Tienda </h1>
+<h1 mat-dialog-title>{{item && item.id ? 'Editar' : 'Crear'}} Item de la Categoría {{category.name}} </h1>
 <div mat-dialog-content>
     <form class="form-class">
         <mat-form-field class="full-width">
-            <input name="itemName" matInput placeholder="Nombre de la Tienda" [(ngModel)]="item.name">
+            <input name="itemName" matInput placeholder="Nombre del Item" [(ngModel)]="item.name">
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <textarea name="itemNoAbout" matInput placeholder="Acerca de la Tienda" [(ngModel)]="item.description"></textarea>
+            <textarea name="itemDescription" matInput placeholder="Descripcion del Item" [(ngModel)]="item.description"></textarea>
         </mat-form-field>
 
         <div class="full-width">
