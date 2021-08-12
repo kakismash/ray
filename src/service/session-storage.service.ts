@@ -1,13 +1,6 @@
-import { Category } from './../model/category.model';
 import { Injectable } from '@angular/core';
 import { Store } from 'src/model/store.model';
 import { User } from 'src/model/user.model';
-
-export interface sSO {
-  store:    Store;
-  user:     User;
-  category: Category;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -28,18 +21,6 @@ export class SessionStorageService {
     return store;
   }
 
-  loadCategory(): Category {
-    const category: Category = new Category();
-    const strString = sessionStorage.getItem('category');
-
-    if (strString) {
-      const jsonStore = JSON.parse(strString);
-      Object.assign(category, jsonStore);
-    }
-
-    return category;
-  }
-
   loadUser(): User {
     const user: User = new User();
     const strString = sessionStorage.getItem('user');
@@ -52,13 +33,11 @@ export class SessionStorageService {
     return user;
   }
 
-  save(obj: Store | User | Category): void {
+  save(obj: Store | User): void {
     if (obj instanceof Store) {
       sessionStorage.setItem('store', JSON.stringify(obj));
     } else if (obj instanceof User) {
       sessionStorage.setItem('user', JSON.stringify(obj));
-    } else if (obj instanceof Category) {
-      sessionStorage.setItem('category', JSON.stringify(obj));
     }
 
   }
