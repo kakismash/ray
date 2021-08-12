@@ -1,9 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Store } from 'src/model/store.model';
 import { SessionStorageService } from 'src/service/session-storage.service';
 import { StoreService } from 'src/service/store.service';
@@ -16,39 +13,16 @@ import { StoreDialogComponent } from './store-dialog/store-dialog.component';
 })
 export class StoreComponent implements OnInit {
 
-  stores:           Array<Store>                  = new Array<Store>();
-  panelOpenState:   boolean                       = false;
-  displayedColumns: string[]                      = ['name', 'address', 'phone', 'email', 'facebook', 'about', 'actions'];
-  dataSource!:      MatTableDataSource<Store>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!:           MatSort;
-  selectedStore:  Store = new Store();
+  stores:         Array<Store> = new Array<Store>();
+  panelOpenState: boolean      = false;
 
   constructor(public dialog:          MatDialog,
               private _snackBar:      MatSnackBar,
               private storeService:   StoreService,
-              private sessionStorageService: SessionStorageService) {
-
-                this.selectedStore = sessionStorageService.loadStore();
-               }
+              private sessionStorageService: SessionStorageService) { }
 
   ngOnInit(): void {
     this.initStores();
-  }
-
-  applyFilter(event: Event): void {
-    const filterValue      = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-  private refreshTable(): void {
-    this.dataSource           = new MatTableDataSource(this.stores);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort      = this.sort;
   }
 
   initStores(): void {
@@ -57,7 +31,6 @@ export class StoreComponent implements OnInit {
         .subscribe(rStores => {
           this.stores = [];
           this.stores = rStores;
-          this.refreshTable();
         }, err => {
           console.log(err);
         });
