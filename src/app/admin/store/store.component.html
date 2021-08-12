@@ -6,32 +6,26 @@
 </mat-card-title>
 <mat-card-subtitle>Puedes administrar tus tiendas desde aqui</mat-card-subtitle>
 
-<mat-card-content>
-    <mat-accordion>
-        <mat-expansion-panel matRipple *ngFor="let store of stores" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-                <mat-panel-title style="display: flex;">
-                    <div style="margin: auto;">
-                        {{store.name}}
+<mat-card-content  *ngFor="let store of stores" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+
+                  <div fxLayout="row wrap">
+                    <div fxFlex="30%">
+                      {{store.name}}
                     </div>
+                  <div fxFlex="30%">
                     <button (click)="onEdit($event, store)" style="margin: auto;" mat-icon-button color="accent">
                       <mat-icon>edit</mat-icon>
                     </button>
+                  </div>
+                  <div fxFlex="30%">
                     <button (click)="onDelete($event, store)" style="margin: auto;" mat-icon-button color="warn">
                       <mat-icon>delete</mat-icon>
                     </button>
-                </mat-panel-title>
-                <mat-panel-description>
-                    <img style="height: 40px;" [src]="store.logo" alt="">
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div>
-                <div>Telefono: {{store.phone}}</div>
-                <div>Direccion: {{store.address}}</div>
-                <div>Correo: {{store.email}}</div>
-                <div>Facebook: {{store.facebook}}</div>
-                <div>Acerca de: {{store.about}}</div>
-            </div>
-        </mat-expansion-panel>
-    </mat-accordion>
+                  </div>
+                  </div>
+
+
+
 </mat-card-content>
+
