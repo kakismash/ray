@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Array<User>> {
-    return this.http.get<Array<User>>(environment.apiURL + '/user');
+    return this.http.get<Array<User>>(environment.apiURL + 'user');
   }
 
   getStore(userId: number): Observable<User> {
@@ -20,11 +20,11 @@ export class UserService {
   }
 
   create(user: User): Observable<User> {
-    return this.http.post<User>(environment.apiURL + '/user', user);
+    return this.http.post<User>(environment.apiURL + 'user', user);
   }
 
   update(user: User): Observable<User> {
-    return this.http.put<User>(environment.apiURL + '/user/' + user.id, user);
+    return this.http.put<User>(environment.apiURL + 'user/' + user.id, user);
   }
 
   remove(userId: number): Observable<void> {
