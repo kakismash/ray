@@ -31,6 +31,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ThemeSwitchComponent } from './theme-switch-component/theme-switch-component.component';
 import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 import { UserMenuComponent } from './user/user-menu/user-menu.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptor } from './interceptor/request.interceptor';
+import { ResponseInterceptor } from './interceptor/response.interceptor';
 
 @NgModule({
   declarations: [
