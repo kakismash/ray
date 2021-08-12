@@ -1,3 +1,4 @@
+import { User } from 'src/model/user.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Store } from 'src/model/store.model';

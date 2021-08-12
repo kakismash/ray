@@ -1,0 +1,11 @@
+<button mat-button [matMenuTriggerFor]="menu">Bienvenido, {{loggedUser.firstname}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>Cambiar contraseña</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Salir del sistema</span>
+      </button>
+    </mat-menu>

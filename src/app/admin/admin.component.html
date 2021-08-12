@@ -1,23 +1,24 @@
 <div class="fullHeight">
     <mat-toolbar color="primary" style="height: 6%;">
-        <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
+        <button (click)="drawer.toggle()" mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
         <mat-spinner *ngIf="loading"></mat-spinner>
         <span *ngIf="!loading && !getStoreInSession()">No existen Tiendas</span>
         <button *ngIf="getStoreInSession()" [hidden]="loading" mat-raised-button [matMenuTriggerFor]="menu" color="primary" (click)="onStoreChange()">{{getStoreInSession().name}}</button>
         <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
             <button *ngFor="let store of stores" mat-menu-item (click)="changeStore(store)">{{store.name}}</button>
         </mat-menu>
-        <app-theme-switch-component style="margin-left: auto;"></app-theme-switch-component>
-    </mat-toolbar>
+        <app-theme-switch-component></app-theme-switch-component>
+          <user-menu></user-menu>
+        </mat-toolbar>
     <mat-drawer-container autosize style="height: 94%;">
         <mat-drawer #drawer class="example-sidenav" mode="side">
             <mat-list>
-                <mat-list-item> <button routerLink="/admin/store" mat-button><mat-icon >home</mat-icon> Store</button> </mat-list-item>
-                <mat-list-item> <button routerLink="/admin/category" mat-button><mat-icon >home</mat-icon> Category</button> </mat-list-item>
-                <mat-list-item> <button routerLink="/admin/item" mat-button><mat-icon >home</mat-icon> Item</button> </mat-list-item>
-                <mat-list-item> <button routerLink="/admin/user" mat-button><mat-icon >home</mat-icon> User</button> </mat-list-item>
+                <mat-list-item> <button routerLink="/admin/store" mat-button><mat-icon>store</mat-icon> Tiendas</button> </mat-list-item>
+                <mat-list-item> <button routerLink="/admin/category" mat-button><mat-icon>list</mat-icon> Categorías</button> </mat-list-item>
+                <mat-list-item> <button routerLink="/admin/item" mat-button><mat-icon>view_list</mat-icon> Items</button> </mat-list-item>
+                <mat-list-item> <button routerLink="/admin/user" mat-button><mat-icon>supervisor_account</mat-icon> Usuarios</button> </mat-list-item>
             </mat-list>
         </mat-drawer>
         <mat-drawer-content>

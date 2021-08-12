@@ -1,16 +1,24 @@
 <h1 mat-dialog-title>{{user && user.id ? 'Editar' : 'Crear'}} Usuario </h1>
 <div mat-dialog-content>
-    <form class="form-class">
+    <form class="form-class" [formGroup]="options">
         <mat-form-field class="full-width">
-            <input name="username" matInput placeholder="Nombre de usuario" [(ngModel)]="user.username">
+            <input name="userEmail" matInput placeholder="Email" [(ngModel)]="user.email" required [formControl]="emailControl">
+            <mat-error *ngIf="emailControl.hasError('required')">Por favor inserte su email</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <input name="userFirstname" matInput placeholder="Nombre" [(ngModel)]="user.firstname">
+          <input name="userPassword" type="password" matInput placeholder="Contraseña" [(ngModel)]="user.password" required [formControl]="passwordControl">
+          <mat-error *ngIf="passwordControl.hasError('required')">Por favor inserte su contraseña</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <input name="userLastname" matInput placeholder="Apellido" [(ngModel)]="user.lastname">
+            <input name="userFirstname" matInput placeholder="Nombre" [(ngModel)]="user.firstname" required [formControl]="firstnameControl">
+            <mat-error *ngIf="firstnameControl.hasError('required')">Por favor inserte su nombre</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input name="userLastname" matInput placeholder="Apellido" [(ngModel)]="user.lastname" required [formControl]="lastnameControl">
+          <mat-error *ngIf="lastnameControl.hasError('required')">Por favor inserte su apellido</mat-error>
         </mat-form-field>
 
         <div class="full-width">
@@ -29,6 +37,10 @@
         </div>
 
         <mat-form-field class="full-width">
+          <input name="userPhone" matInput placeholder="Teléfono" [(ngModel)]="user.phone">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
           <textarea name="bioUser" matInput placeholder="Biografía" [(ngModel)]="user.bio"></textarea>
         </mat-form-field>
 
@@ -36,5 +48,5 @@
 </div>
 <div mat-dialog-actions>
     <button style="margin-right: auto;" color="warn" mat-raised-button (click)="onClose()">Cerrar</button>
-    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!user.username" (click)="onSave()" cdkFocusInitial>Guardar</button>
+    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!user.email" (click)="onSave()" cdkFocusInitial>Guardar</button>
 </div>

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
               private router:                Router                 ) {
 
     this.user            = new User();
-    this.usernameControl = new FormControl(this.user.email, [Validators.required]);
+    this.usernameControl = new FormControl(this.user.username, [Validators.required]);
     this.passwordControl = new FormControl(this.user.password, [Validators.required]);
     this.options         = fb.group({
       username: this.usernameControl,
