@@ -29,6 +29,8 @@ export class RequestInterceptor implements HttpInterceptor{
 
         tokenReq = req.clone({headers: req.headers.set('Authorization',
                                                       'Bearer ' + token)});
+        tokenReq = req.clone({headers: req.headers.set('userid', '' + this.sessionService
+                                                                          .loadUser().id)});
       }
     }
 
