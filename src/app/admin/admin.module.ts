@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -66,7 +67,8 @@ import { UserMenuComponent } from './user/user-menu/user-menu.component';
     MatSelectModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ]
 })
 export class AdminModule { }
