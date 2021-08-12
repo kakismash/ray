@@ -29,7 +29,6 @@ export class SessionStorageService {
       const jsonStore = JSON.parse(strString);
       Object.assign(user, jsonStore);
     }
-
     return user;
   }
 

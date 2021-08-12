@@ -17,7 +17,6 @@ export class RequestInterceptor implements HttpInterceptor{
             next: HttpHandler): Observable<HttpEvent<any>>{
 
     let tokenReq = req;
-
     if (req.url &&
         !req.url.includes('login') && !req.url.includes('public')) {
 
@@ -25,12 +24,12 @@ export class RequestInterceptor implements HttpInterceptor{
                         .loadUser().token;
 
       if (token != null &&
-          token !== undefined){
+          token !== undefined) {
+        let clonedRequest = req.clone({ headers: req.headers.append('Authorization', 'Bearer ' + token) });
+        clonedRequest = clonedRequest.clone({ headers: clonedRequest.headers.append('userid', '' + this.sessionService.loadUser().id)});
 
-        tokenReq = req.clone({headers: req.headers.set('Authorization',
-                                                      'Bearer ' + token)});
-        tokenReq = req.clone({headers: req.headers.set('userid', '' + this.sessionService
-                                                                          .loadUser().id)});
+        tokenReq = req.clone(clonedRequest);
+        console.log(tokenReq.headers.get('Authorization'));
       }
     }
 
