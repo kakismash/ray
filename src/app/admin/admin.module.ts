@@ -28,6 +28,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ThemeSwitchComponent } from './theme-switch-component/theme-switch-component.component';
+import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ThemeSwitchComponent } from './theme-switch-component/theme-switch-comp
     StoreDialogComponent,
     CategoryDialogComponent,
     ItemDialogComponent,
-    ThemeSwitchComponent
+    ThemeSwitchComponent,
+    UserDialogComponent
   ],
   imports: [
     CommonModule,

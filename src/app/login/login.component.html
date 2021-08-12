@@ -4,8 +4,8 @@
       <form [formGroup]="options">
         <p>Entrar al sistema</p>
         <mat-form-field class="full-width-input">
-          <input [(ngModel)]="user.email" matInput placeholder="Correo" [formControl]="emailControl" required>
-          <mat-error *ngIf="emailControl.hasError('required')">Por favor inserte su correo</mat-error>
+          <input [(ngModel)]="user.username" matInput placeholder="Nombre de usuario" [formControl]="usernameControl" required>
+          <mat-error *ngIf="usernameControl.hasError('required')">Por favor inserte su nombre de usuario</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width-input">
           <input [(ngModel)]="user.password" matInput type="password" placeholder="Password" [formControl]="passwordControl" required>

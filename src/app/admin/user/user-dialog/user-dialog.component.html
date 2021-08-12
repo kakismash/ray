@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>{{user && user.id ? 'Editar' : 'Crear'}} Usuario </h1>
+<div mat-dialog-content>
+    <form class="form-class">
+        <mat-form-field class="full-width">
+            <input name="username" matInput placeholder="Nombre de usuario" [(ngModel)]="user.username">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <input name="userFirstname" matInput placeholder="Nombre" [(ngModel)]="user.firstname">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input name="userLastname" matInput placeholder="Apellido" [(ngModel)]="user.lastname">
+        </mat-form-field>
+
+        <div class="full-width">
+            <input name="storeLogo" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
+            <div class="full-width" style="display: flex;">
+                <img style="max-width: 70%; max-height: 100px;" *ngIf="user.image" [src]="user.image" alt="">
+                <h5 *ngIf="!user.image">No file uploaded yet.</h5>
+                <button style="margin: auto;" mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                  <mat-icon>attach_file</mat-icon>
+              </button>
+            </div>
+            <div class="progress">
+                <mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
+                <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
+            </div>
+        </div>
+
+        <mat-form-field class="full-width">
+          <textarea name="bioUser" matInput placeholder="Biografía" [(ngModel)]="user.bio"></textarea>
+        </mat-form-field>
+
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button style="margin-right: auto;" color="warn" mat-raised-button (click)="onClose()">Cerrar</button>
+    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!user.username" (click)="onSave()" cdkFocusInitial>Guardar</button>
+</div>

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   user!:            User;
   options!:         FormGroup;
-  emailControl!:    FormControl;
+  usernameControl!: FormControl;
   passwordControl!: FormControl;
 
   constructor(private fb:                    FormBuilder,
@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
               private router:                Router                 ) {
 
     this.user            = new User();
-    this.emailControl    = new FormControl(this.user.email, [Validators.required]);
+    this.usernameControl = new FormControl(this.user.email, [Validators.required]);
     this.passwordControl = new FormControl(this.user.password, [Validators.required]);
     this.options         = fb.group({
-      email:    this.emailControl,
+      username: this.usernameControl,
       password: this.passwordControl
     });
               }
