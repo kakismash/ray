@@ -31,9 +31,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ThemeSwitchComponent } from './theme-switch-component/theme-switch-component.component';
 import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 import { UserMenuComponent } from './user/user-menu/user-menu.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RequestInterceptor } from './interceptor/request.interceptor';
-import { ResponseInterceptor } from './interceptor/response.interceptor';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,9 @@ import { ResponseInterceptor } from './interceptor/response.interceptor';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    MatSortModule,
     MatSidenavModule,
+    MatPaginatorModule,
     MatListModule,
     MatButtonModule,
     MatIconModule,
@@ -62,6 +64,7 @@ import { ResponseInterceptor } from './interceptor/response.interceptor';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatTableModule,
     MatDialogModule,
     MatRippleModule,
     MatMenuModule,
