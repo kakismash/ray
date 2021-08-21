@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from 'src/model/store.model';
 import { User } from 'src/model/user.model';
 
@@ -7,7 +8,7 @@ import { User } from 'src/model/user.model';
 })
 export class SessionStorageService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   loadStore(): Store {
     const store: Store = new Store();
@@ -43,5 +44,14 @@ export class SessionStorageService {
 
   remove(key: string): void {
     sessionStorage.removeItem(key);
+  }
+
+  hasToken(): boolean {
+    const user = this.loadUser()
+    return user && user.token !== undefined;
+  }
+
+  redirectToLogin(): void{
+    this.router.navigate(['login']);
   }
 }
