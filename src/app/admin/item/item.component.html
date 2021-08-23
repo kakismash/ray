@@ -17,24 +17,24 @@
         <mat-accordion>
             <mat-expansion-panel matRipple *ngFor="let item of items">
                 <mat-expansion-panel-header>
-                    <mat-panel-title style="display: flex;">
+                    <mat-panel-title style="display: flex">
                         <div style="margin: auto;">
                             {{item.name}}
                         </div>
                         <button (click)="onEdit($event, item)" style="margin: auto;" mat-icon-button color="accent">
-                    <mat-icon>edit</mat-icon>
-                  </button>
+                          <mat-icon>edit</mat-icon>
+                        </button>
                         <button (click)="onDelete($event, item)" style="margin: auto;" mat-icon-button color="warn">
-                    <mat-icon>delete</mat-icon>
-                  </button>
+                          <mat-icon>delete</mat-icon>
+                        </button>
                     </mat-panel-title>
                     <mat-panel-description>
                         <img style="height: 40px;" [src]="item.image" alt="">
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <div>
-                  <div>Descripción: {{item.description}}</div>
-                  <div>Precio: {{item.price}}</div>
+                    <div>Descripción: {{item.description}}</div>
+                    <div>Precio: {{item.price}}</div>
                 </div>
             </mat-expansion-panel>
         </mat-accordion>

@@ -33,6 +33,7 @@ export class StoreDialogComponent {
     this.store.facebook = '';
     this.store.logo     = '';
     this.store.phone    = '';
+    this.store.background = '';
   }
 
   onClose(): void {
@@ -43,7 +44,7 @@ export class StoreDialogComponent {
     this.dialogRef.close(this.store);
   }
 
-  onFileSelected(event: any) {
+  onFileSelected(event: any, type: string) {
     this.uploadProgress = true;
     const file: File    = event.target.files[0];
     if (file) {
@@ -53,9 +54,13 @@ export class StoreDialogComponent {
       this.bucketService
           .uploadFile(formData)
           .subscribe(r => {
-            this.store.logo     = r;
-            this.uploadProgress = false;
-            console.log(this.store)
+            if (type === 'logo') {
+              this.store.logo     = r;
+              this.uploadProgress = false;
+            } else if (type === 'background') {
+              this.store.background = r;
+              this.uploadProgress   = false;
+            }
           }, err => {
             console.log(err);
             this.uploadProgress = false;

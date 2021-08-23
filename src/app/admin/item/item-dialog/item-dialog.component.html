@@ -30,5 +30,5 @@
 </div>
 <div mat-dialog-actions>
     <button style="margin-right: auto;" color="warn" mat-raised-button (click)="onClose()">Cerrar</button>
-    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!item.name" (click)="onSave()" cdkFocusInitial>Guardar</button>
+    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!item.name" (click)="onSave()" cdkFocusInitial>{{item.id ? 'Guardar' : 'Crear'}}</button>
 </div>

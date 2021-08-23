@@ -10,7 +10,7 @@
         </mat-form-field>
 
         <div class="full-width">
-            <input name="storeLogo" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
+            <input name="storeLogo" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event, 'logo')" #fileUpload>
             <div class="full-width" style="display: flex;">
                 <img style="max-width: 70%; max-height: 100px;" *ngIf="store.logo" [src]="store.logo" alt="">
                 <h5 *ngIf="!store.logo">No file uploaded yet.</h5>
@@ -23,6 +23,21 @@
                 <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
             </div>
         </div>
+        <div class="full-width">
+            <input name="storeBackground" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event, 'background')" #fileUploadBackground>
+            <div class="full-width" style="display: flex;">
+                <img style="max-width: 70%; max-height: 100px;" *ngIf="store.background" [src]="store.background" alt="">
+                <h5 *ngIf="!store.background">No file uploaded yet.</h5>
+                <button style="margin: auto;" mat-mini-fab color="primary" class="upload-btn" (click)="fileUploadBackground.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+            </div>
+            <div class="progress">
+                <mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
+                <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
+            </div>
+        </div>
+
         <mat-form-field class="full-width">
             <input name="storePhone" matInput placeholder="Telefono de la Tienda" [(ngModel)]="store.phone">
         </mat-form-field>
@@ -39,5 +54,5 @@
 </div>
 <div mat-dialog-actions>
     <button style="margin-right: auto;" color="warn" mat-raised-button (click)="onClose()">Cerrar</button>
-    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!store.name" (click)="onSave()" cdkFocusInitial>Guardar</button>
+    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!store.name" (click)="onSave()" cdkFocusInitial>{{store.id ? 'Guardar' : 'Crear'}}</button>
 </div>

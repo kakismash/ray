@@ -5,7 +5,7 @@
             <input name="categoryName" matInput placeholder="Nombre de la Categoría" [(ngModel)]="category.name">
         </mat-form-field>
 
-        <div class="full-width">
+        <!-- <div class="full-width">
             <input name="categoryImage" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
             <div class="full-width" style="display: flex;">
                 <img style="max-width: 70%; max-height: 100px;" *ngIf="category.image" [src]="category.image" alt="">
@@ -18,7 +18,7 @@
                 <mat-progress-bar *ngIf="uploadProgress" mode="indeterminate"></mat-progress-bar>
                 <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
             </div>
-        </div>
+        </div> -->
     </form>
 </div>
 <div mat-dialog-actions>

@@ -13,11 +13,13 @@ import { LoginComponent } from './login/login.component';
 import { RequestInterceptor } from './admin/interceptor/request.interceptor';
 import { ResponseInterceptor } from './admin/interceptor/response.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PublicComponent } from './public/public.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    PublicComponent
   ],
   imports: [
   BrowserModule,

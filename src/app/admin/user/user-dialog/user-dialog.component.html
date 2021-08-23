@@ -7,18 +7,18 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <input name="userPassword" type="password" matInput placeholder="Contraseña" [(ngModel)]="user.password" required [formControl]="passwordControl">
-          <mat-error *ngIf="passwordControl.hasError('required')">Por favor inserte su contraseña</mat-error>
+            <input name="userPassword" type="password" matInput placeholder="Contraseña" [(ngModel)]="user.password" required [formControl]="passwordControl">
+            <mat-error *ngIf="passwordControl.hasError('required')">Por favor inserte su contraseña</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <input name="userFirstname" matInput placeholder="Nombre" [(ngModel)]="user.firstname" required [formControl]="firstnameControl">
+            <input matInput placeholder="Nombre" [(ngModel)]="user.firstname" required [formControl]="firstnameControl">
             <mat-error *ngIf="firstnameControl.hasError('required')">Por favor inserte su nombre</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <input name="userLastname" matInput placeholder="Apellido" [(ngModel)]="user.lastname" required [formControl]="lastnameControl">
-          <mat-error *ngIf="lastnameControl.hasError('required')">Por favor inserte su apellido</mat-error>
+            <input name="userLastname" matInput placeholder="Apellido" [(ngModel)]="user.lastname" required [formControl]="lastnameControl">
+            <mat-error *ngIf="lastnameControl.hasError('required')">Por favor inserte su apellido</mat-error>
         </mat-form-field>
 
         <div class="full-width">
@@ -37,16 +37,12 @@
         </div>
 
         <mat-form-field class="full-width">
-          <input name="userPhone" matInput placeholder="Teléfono" [(ngModel)]="user.phone">
+            <input matInput placeholder="Telefono" [(ngModel)]="user.phone" required [formControl]="phoneControl">
+            <mat-error *ngIf="phoneControl.hasError('required')">Por favor inserte su telefono</mat-error>
         </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <textarea name="bioUser" matInput placeholder="Biografía" [(ngModel)]="user.bio"></textarea>
-        </mat-form-field>
-
     </form>
 </div>
 <div mat-dialog-actions>
     <button style="margin-right: auto;" color="warn" mat-raised-button (click)="onClose()">Cerrar</button>
-    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!user.email" (click)="onSave()" cdkFocusInitial>Guardar</button>
+    <button style="margin-left: auto;" color="primary" mat-raised-button [disabled]="!user.email" (click)="onSave()" cdkFocusInitial>{{user.id ? 'Guardar' : 'Crear'}}</button>
 </div>

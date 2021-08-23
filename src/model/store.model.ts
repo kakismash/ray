@@ -9,6 +9,6 @@ export class Store {
   email!: string;
   address!: string;
   facebook!: string;
-
+  background!: string;
   categories!: Category[];
 }

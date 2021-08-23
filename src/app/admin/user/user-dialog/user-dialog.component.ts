@@ -19,6 +19,7 @@ export class UserDialogComponent implements OnInit {
   passwordControl!:  FormControl;
   firstnameControl!: FormControl;
   lastnameControl!:  FormControl;
+  phoneControl!:     FormControl;
 
   constructor(private fb:                           FormBuilder,
               public dialogRef:                     MatDialogRef<UserDialogComponent>,
@@ -33,12 +34,14 @@ export class UserDialogComponent implements OnInit {
     this.passwordControl  = new FormControl(this.user.password, [Validators.required]);
     this.firstnameControl = new FormControl(this.user.firstname, [Validators.required]);
     this.lastnameControl  = new FormControl(this.user.lastname, [Validators.required]);
+    this.phoneControl  = new FormControl(this.user.phone, [Validators.required]);
 
     this.options          = fb.group({
       email:     this.emailControl,
       password:  this.passwordControl,
       firstname: this.firstnameControl,
-      lastname:  this.lastnameControl
+      lastname:  this.lastnameControl,
+      phone:     this.phoneControl
     });
   }
 
