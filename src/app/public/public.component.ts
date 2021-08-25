@@ -23,8 +23,15 @@ export class PublicComponent {
           .getPublic(id)
           .subscribe(res => {
             this.public = res
+            console.log(this.public);
+            this.setBackgroundImage(this.public.store.background);
           });
 
     });
   }
+
+  private setBackgroundImage(imagePath: string): void {
+    document.body.style.backgroundImage = 'url("' + imagePath + '")';
+  }
+
 }

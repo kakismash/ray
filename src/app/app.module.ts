@@ -15,6 +15,8 @@ import { ResponseInterceptor } from './admin/interceptor/response.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PublicComponent } from './public/public.component';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,7 @@ import { PublicComponent } from './public/public.component';
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,

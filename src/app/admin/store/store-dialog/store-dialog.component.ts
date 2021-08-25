@@ -48,7 +48,11 @@ export class StoreDialogComponent {
     this.uploadProgress = true;
     const file: File    = event.target.files[0];
     if (file) {
-      this.store.logo = file.name;
+      if (type === 'logo') {
+        this.store.logo = file.name;
+      } else if (type === 'background') {
+        this.store.background = file.name;
+      }
       const formData  = new FormData();
       formData.append('upload', file);
       this.bucketService
