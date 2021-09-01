@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Category } from 'src/model/category.model';
 
 import { Public } from './shared/public.model';
 import { PublicService } from './shared/public.service';
@@ -13,6 +12,7 @@ import { PublicService } from './shared/public.service';
 })
 
 export class PublicComponent {
+
 	public!: Public;
 
 	constructor(private publicService: PublicService,
