@@ -1,5 +1,5 @@
 <mat-tab-group mat-align-tabs="start">
-  <mat-tab *ngFor="let category of categories" label="{{ category.name }}">
+  <mat-tab *ngFor="let category of public.store.categories" label="{{ category.name }}">
     <div fxLayout="row wrap" class="content" fxLayoutGap="10px grid">
       <item-menu fxFlex.lg="33%" fxFlex.md="50%" fxFlex.sm="100%" *ngFor="let item of getItemsByCategory(category.id)"
         [item]="item">

@@ -1,4 +1,3 @@
-import { ItemService } from './../../../service/item.service';
 import { Item } from './../../../model/item.model';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -14,7 +13,6 @@ export class ItemMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.item)
   }
 
 }

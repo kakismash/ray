@@ -1,3 +1,4 @@
+import { Public } from './../shared/public.model';
 import { ItemService } from './../../../service/item.service';
 import { Item } from './../../../model/item.model';
 import { Store } from './../../../model/store.model';
@@ -12,34 +13,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Input() store!: Store;
-  categories:      Array<Category> = new Array<Category>();
+  @Input() public!: Public;
 
-  constructor(private categoryService: CategoryService,
-              private itemService:     ItemService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.loadCategories();
-  }
-
-  loadCategories(): void {
-    this.categoryService
-        .getAllByStore(this.store.id)
-        .subscribe(rCategories => {
-          this.categories = new Array<Category>();
-          Object.assign(this.categories, rCategories);
-        }, err => {
-          console.log(err);
-        });
   }
 
   getItemsByCategory(categoryId: number): Array<Item> {
     const items: Array<Item> = new Array<Item>();
-    this.itemService
-        .getAllByCategory(categoryId)
-        .subscribe(itemsR => {
-          Object.assign(items, itemsR);
-          });
+    const category: Category = this.public.store.categories.find(c => c.id === categoryId) || new Category();
+    items.push(...category.items);
     return items;
   }
 
