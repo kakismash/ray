@@ -10,7 +10,9 @@
             <button *ngFor="let store of stores" mat-menu-item (click)="changeStore(store)">{{store.name}}</button>
         </mat-menu>
         <app-theme-switch-component></app-theme-switch-component>
-          <user-menu></user-menu>
+          <user-menu fxFlex.lg="100%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xl="100%" fxFlex.xs="100%"
+            fxLayoutAlign="end center">
+          </user-menu>
         </mat-toolbar>
     <mat-drawer-container autosize style="height: 94%;">
         <mat-drawer #drawer class="example-sidenav" mode="side">
