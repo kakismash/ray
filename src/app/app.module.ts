@@ -14,8 +14,8 @@ import { RequestInterceptor } from './admin/interceptor/request.interceptor';
 import { ResponseInterceptor } from './admin/interceptor/response.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PublicComponent } from './public/public.component';
-
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
   providers: [
     {

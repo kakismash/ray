@@ -34,6 +34,9 @@ import { UserMenuComponent } from './user/user-menu/user-menu.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MenuComponent } from '../public/menu/menu.component';
+import { ItemMenuComponent } from '../public/item-menu/item-menu.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { MatTableModule } from '@angular/material/table';
     ItemDialogComponent,
     ThemeSwitchComponent,
     UserDialogComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    MenuComponent,
+    ItemMenuComponent
   ],
   imports: [
     CommonModule,
@@ -74,6 +79,7 @@ import { MatTableModule } from '@angular/material/table';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     FormsModule,
+    MatTabsModule,
     FlexLayoutModule
   ]
 })

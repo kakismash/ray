@@ -1,0 +1,8 @@
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab *ngFor="let menu of menus" label="{{ menu.name }}">
+    <div fxLayout="row wrap" class="content" fxLayoutGap="10px grid">
+      <item-menu fxFlex.lg="33%" fxFlex.md="50%" fxFlex.sm="100%" *ngFor="let item of menu.items">
+      </item-menu>
+    </div>
+  </mat-tab>
+</mat-tab-group>
