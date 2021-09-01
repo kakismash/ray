@@ -1,3 +1,5 @@
+import { MenuComponent } from './admin/public/menu/menu.component';
+import { ItemMenuComponent } from './admin/public/item-menu/item-menu.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,7 +23,9 @@ import { MatTabsModule } from '@angular/material/tabs';
   declarations: [
     AppComponent,
     LoginComponent,
-    PublicComponent
+    PublicComponent,
+    MenuComponent,
+    ItemMenuComponent
   ],
   imports: [
   BrowserModule,
