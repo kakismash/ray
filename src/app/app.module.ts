@@ -1,5 +1,5 @@
-import { MenuComponent } from './admin/public/menu/menu.component';
-import { ItemMenuComponent } from './admin/public/item-menu/item-menu.component';
+import { MenuComponent } from './public/menu/menu.component';
+import { ItemMenuComponent } from './public/item-menu/item-menu.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PublicComponent } from './public/public.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    FlexLayoutModule
   ],
   providers: [
     {

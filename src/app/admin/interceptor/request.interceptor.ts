@@ -29,7 +29,7 @@ export class RequestInterceptor implements HttpInterceptor{
         clonedRequest = clonedRequest.clone({ headers: clonedRequest.headers.append('userid', '' + this.sessionService.loadUser().id)});
 
         tokenReq = req.clone(clonedRequest);
-        console.log(tokenReq.headers.get('Authorization'));
+        //console.log(tokenReq.headers.get('Authorization'));
       }
     }
 

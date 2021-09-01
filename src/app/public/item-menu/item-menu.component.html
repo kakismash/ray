@@ -1,1 +1,22 @@
-<p>item-menu works!</p>
+<mat-card class="outlined-card">
+  <mat-card-content>
+    <div fxLayout="row wrap">
+      <div class="box-text" fxFlex.lg="70%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex="70%">
+        <p class="title animation-title">{{ item.name }}</p>
+        <div class="underbar"></div>
+        <p class="trim-words">
+          {{ item.description }}
+        </p>
+        <p class="price">
+          {{ item.price / 100 | currency: 'USD' }}
+        </p>
+      </div>
+      <div class="box" fxFlex.lg="30%" fxFlex.md="30%" fxFlex.sm="30%" fxFlex="30%" >
+        <img *ngIf="item.image !== undefined; else noImage" src="{{ item.image }}" alt="{{ item.name }}">
+        <ng-template #noImage>
+          <img src="./assets/no-image.jpg" alt="{{ item.name }}">
+        </ng-template>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

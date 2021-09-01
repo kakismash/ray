@@ -22,8 +22,7 @@ export class PublicComponent {
       this.publicService
           .getPublic(id)
           .subscribe(res => {
-            this.public = res
-            console.log(this.public);
+            this.public = res;
             this.setBackgroundImage(this.public.store.background);
           });
 
@@ -31,7 +30,7 @@ export class PublicComponent {
   }
 
   private setBackgroundImage(imagePath: string): void {
-    document.body.style.backgroundImage = 'url("' + imagePath + '")';
+    //document.body.style.backgroundImage = 'url("' + imagePath + '")';
   }
 
 }

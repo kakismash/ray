@@ -1,6 +1,7 @@
+import { ItemService } from './../../../service/item.service';
+import { Item } from './../../../model/item.model';
 import { Store } from './../../../model/store.model';
 import { Category } from './../../../model/category.model';
-import { Public } from './../shared/public.model';
 import { CategoryService } from './../../../service/category.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -14,9 +15,11 @@ export class MenuComponent implements OnInit {
   @Input() store!: Store;
   categories:      Array<Category> = new Array<Category>();
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService,
+              private itemService:     ItemService) { }
 
   ngOnInit(): void {
+    this.loadCategories();
   }
 
   loadCategories(): void {
@@ -24,10 +27,20 @@ export class MenuComponent implements OnInit {
         .getAllByStore(this.store.id)
         .subscribe(rCategories => {
           this.categories = new Array<Category>();
-          this.categories = rCategories;
+          Object.assign(this.categories, rCategories);
         }, err => {
           console.log(err);
         });
+  }
+
+  getItemsByCategory(categoryId: number): Array<Item> {
+    const items: Array<Item> = new Array<Item>();
+    this.itemService
+        .getAllByCategory(categoryId)
+        .subscribe(itemsR => {
+          Object.assign(items, itemsR);
+          });
+    return items;
   }
 
 }
