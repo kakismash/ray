@@ -5,7 +5,7 @@
 
 :host ::ng-deep .mat-tab-header {
   background-color: white;
-  top: 55px;
+  top: 100px;
   z-index: 100;
   position: sticky;
   position: -webkit-sticky; /* macOS/iOS Safari */
@@ -51,7 +51,7 @@
 }
 
 menu {
-  margin-top: 0px !important;
+  margin-top: 50px !important;
 }
 
 html, body {
@@ -68,4 +68,3 @@ html, body {
   align-items: center;
   padding: 20px;
 }
-
