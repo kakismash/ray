@@ -1,1 +1,14 @@
-<p>item-dialog works!</p>
+<div fxLayout="row wrap" class="header-dialog" mat-dialog-title>
+  <div class="box-title-dialog">
+    <h1 class="header-3">{{ item.name }}</h1>
+  </div>
+  <div class="dialog-img" fxFlex.lg="100%" fxFlex.md="100%" fxFlex.sm="100%" fxFlex.xs="100%" fxFlex.xl="100%">
+    <img *ngIf="item.image !== undefined; else noImage" src="{{ item.image }}" alt="{{ item.name }}">
+    <ng-template #noImage>
+      <img src="./assets/no-image.jpg" alt="{{ item.name }}">
+    </ng-template>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</div>

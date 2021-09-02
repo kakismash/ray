@@ -1,3 +1,5 @@
+import { ItemDialogComponent } from './item-dialog/item-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Item } from './../../../model/item.model';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -10,9 +12,13 @@ export class ItemMenuComponent implements OnInit {
 
   @Input() item!: Item;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openItemDialog(): void {
+    const dialogRef = this.dialog.open(ItemDialogComponent, { data: this.item });
   }
 
 }

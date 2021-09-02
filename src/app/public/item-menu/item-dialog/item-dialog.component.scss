@@ -1,0 +1,74 @@
+.content-center {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#decoration-title {
+  -webkit-text-decoration: rgba(235, 69, 69, 0.10) double underline;
+  text-decoration: rgba(235, 69, 69, 0.10) double underline;
+  transition-property: text-decoration;
+  transition: ease-in;
+  transition-duration: 3s;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border: 10px solid white;
+  border-radius: 5em;
+}
+
+div .dialog-img {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-content: center !important;
+  justify-content: center !important;
+}
+
+.sticky-center {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.align-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+}
+
+.header-dialog {
+  margin-bottom: 15px !important;
+}
+
+.box-title-dialog {
+  justify-content: flex-start;
+  align-content: center;
+  display: flex;
+  align-items: center;
+}
+
+:focus {
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+
+
+
+
+
+
+
