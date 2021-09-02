@@ -59,3 +59,13 @@ html, body {
   overflow-x: hidden !important;
 }
 
+.content-center {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+

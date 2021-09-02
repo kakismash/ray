@@ -14,6 +14,7 @@ import { PublicService } from './shared/public.service';
 export class PublicComponent {
 
 	public!: Public;
+  loading: boolean = true;
 
 	constructor(private publicService: PublicService,
               private activatedRoute: ActivatedRoute) {
@@ -24,6 +25,7 @@ export class PublicComponent {
           .subscribe(res => {
             this.public = res;
             this.setBackgroundImage(this.public.store.background);
+            this.loading = false;
           });
 
     });

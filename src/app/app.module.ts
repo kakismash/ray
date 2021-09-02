@@ -1,3 +1,4 @@
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './public/menu/menu.component';
 import { ItemMenuComponent } from './public/item-menu/item-menu.component';
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +20,8 @@ import { PublicComponent } from './public/public.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavbarComponent } from './public/navbar/navbar.component';
+import { ItemDialogComponent } from './public/item-menu/item-dialog/item-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +29,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     LoginComponent,
     PublicComponent,
     MenuComponent,
-    ItemMenuComponent
+    ItemMenuComponent,
+    NavbarComponent,
+    ItemDialogComponent
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -42,7 +47,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     MatInputModule,
     MatTabsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatToolbarModule
   ],
   providers: [
     {

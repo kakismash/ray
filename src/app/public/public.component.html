@@ -1,4 +1,11 @@
+<div *ngIf="loading; ready" fxFlex="100%" class="content-center">
+  <mat-spinner [strokeWidth]="10" [diameter]="100"></mat-spinner>
+</div>
+<ng-container #ready>
+  <navbar *ngIf="public !== undefined" [public]="public"></navbar>
 <menu *ngIf="public !== undefined" class="without-margin" [public]="public"></menu>
+</ng-container>
+
 
 
 
