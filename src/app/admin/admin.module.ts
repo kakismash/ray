@@ -28,13 +28,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { ThemeSwitchComponent } from './theme-switch-component/theme-switch-component.component';
 import { UserDialogComponent } from './user/user-dialog/user-dialog.component';
 import { UserMenuComponent } from './user/user-menu/user-menu.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CommonPackModule } from '../common/common.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     StoreDialogComponent,
     CategoryDialogComponent,
     ItemDialogComponent,
-    ThemeSwitchComponent,
     UserDialogComponent,
     UserMenuComponent
   ],
@@ -76,8 +75,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatProgressSpinnerModule,
     FormsModule,
     MatTabsModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    CommonPackModule
   ]
 })
 export class AdminModule { }

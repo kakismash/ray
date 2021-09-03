@@ -1,4 +1,3 @@
-import { ThemeSwitchComponent } from './admin/theme-switch-component/theme-switch-component.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './public/menu/menu.component';
@@ -21,10 +20,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PublicComponent } from './public/public.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './public/navbar/navbar.component';
 import { ItemDialogComponent } from './public/item-menu/item-dialog/item-dialog.component';
+import { CommonPackModule } from './common/common.module';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,7 @@ import { ItemDialogComponent } from './public/item-menu/item-dialog/item-dialog.
     MenuComponent,
     ItemMenuComponent,
     NavbarComponent,
-    ItemDialogComponent,
-    ThemeSwitchComponent
+    ItemDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +54,9 @@ import { ItemDialogComponent } from './public/item-menu/item-dialog/item-dialog.
     FlexLayoutModule,
     MatToolbarModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    CommonPackModule
   ],
   providers: [
     {
