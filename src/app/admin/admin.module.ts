@@ -77,6 +77,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     FormsModule,
     MatTabsModule,
     FlexLayoutModule
+
   ]
 })
 export class AdminModule { }

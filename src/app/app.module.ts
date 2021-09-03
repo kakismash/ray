@@ -1,3 +1,4 @@
+import { ThemeSwitchComponent } from './admin/theme-switch-component/theme-switch-component.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './public/menu/menu.component';
@@ -33,7 +34,8 @@ import { ItemDialogComponent } from './public/item-menu/item-dialog/item-dialog.
     MenuComponent,
     ItemMenuComponent,
     NavbarComponent,
-    ItemDialogComponent
+    ItemDialogComponent,
+    ThemeSwitchComponent
   ],
   imports: [
     BrowserModule,
