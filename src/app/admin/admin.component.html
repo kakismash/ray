@@ -5,10 +5,13 @@
         </button>
         <mat-spinner *ngIf="loading"></mat-spinner>
         <span *ngIf="!loading && !getStoreInSession()">No existen Tiendas</span>
-        <button *ngIf="getStoreInSession()" [hidden]="loading" mat-raised-button [matMenuTriggerFor]="menu" color="primary" (click)="onStoreChange()">{{getStoreInSession().name}}</button>
-        <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
+        <button class="store-button" *ngIf="getStoreInSession()" [hidden]="loading" mat-raised-button [matMenuTriggerFor]="menu" color="primary" (click)="onStoreChange()">{{getStoreInSession().name}}</button>
+        <div fxFlex.lg="100%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xl="100%" fxFlex.xs="100%"
+        fxLayoutAlign="end center">
+          <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
             <button *ngFor="let store of stores" mat-menu-item (click)="changeStore(store)">{{store.name}}</button>
-        </mat-menu>
+          </mat-menu>
+        </div>
         <app-theme-switch-component></app-theme-switch-component>
           <user-menu fxFlex.lg="100%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xl="100%" fxFlex.xs="100%"
             fxLayoutAlign="end center">
