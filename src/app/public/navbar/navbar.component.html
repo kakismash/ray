@@ -2,7 +2,8 @@
   <div>
     <img *ngIf="public.store.logo !== undefined" width="30%" [src]="public.store.logo">
   </div>
-  <div>
+  <div fxFlex.lg="100%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xl="100%" fxFlex.xs="100%"
+  fxLayoutAlign="end center">
     <theme-switch-component></theme-switch-component>
   </div>
 </mat-toolbar>
