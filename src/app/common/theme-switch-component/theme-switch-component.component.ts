@@ -2,16 +2,16 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-theme-switch-component',
+  selector: 'theme-switch-component',
   templateUrl: './theme-switch-component.component.html',
   styleUrls: ['./theme-switch-component.component.scss']
 })
 export class ThemeSwitchComponent  {
   private static readonly DARK_THEME_CLASS = 'dark-theme';
   private static readonly DARK_THEME_LIGHT = 'light';
-  private static readonly DARK_THEME_DARK = 'dark';
+  private static readonly DARK_THEME_DARK  = 'dark';
 
-  styles?: Array<string> = ['Dark', 'Light'];
+  styles?: Array<string> = ['Modo Oscuro', 'Modo Claro'];
 
   public theme: string;
 
@@ -26,9 +26,9 @@ export class ThemeSwitchComponent  {
   }
 
   onSelectionChange(selected: string): void {
-    if (selected === 'Dark') {
+    if (selected === 'Modo Oscuro') {
       this.selectDarkTheme()
-    } else if (selected === 'Light') {
+    } else if (selected === 'Modo Claro') {
       this.selectLightTheme();
     }
   }
