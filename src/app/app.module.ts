@@ -25,7 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './public/navbar/navbar.component';
 import { ItemDialogComponent } from './public/item-menu/item-dialog/item-dialog.component';
-import { CommonPackModule } from './common/common.module';
+import { CommonPackModule } from './common/common.module'
 
 @NgModule({
   declarations: [

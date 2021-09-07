@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from 'src/model/store.model';
-import { SessionStorageService } from 'src/service/session-storage.service';
 import { StoreService } from 'src/service/store.service';
 import { StoreDialogComponent } from './store-dialog/store-dialog.component';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-store',
@@ -16,10 +16,10 @@ export class StoreComponent implements OnInit {
   stores:         Array<Store> = new Array<Store>();
   panelOpenState: boolean      = false;
 
-  constructor(public dialog:          MatDialog,
-              private _snackBar:      MatSnackBar,
-              private storeService:   StoreService,
-              private sessionStorageService: SessionStorageService) { }
+  constructor(public dialog:                      MatDialog,
+              private _snackBar:                  MatSnackBar,
+              private storeService:               StoreService,
+              @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit(): void {
     this.initStores();
@@ -34,6 +34,10 @@ export class StoreComponent implements OnInit {
         }, err => {
           console.log(err);
         });
+  }
+
+  getMainURL(): any {
+    return this.document.location.origin;
   }
 
   openStoreDialog(store?: Store): void {

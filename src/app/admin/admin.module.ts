@@ -35,6 +35,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommonPackModule } from '../common/common.module';
+import { QRCodeModule } from 'angular2-qrcode';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { CommonPackModule } from '../common/common.module';
     FormsModule,
     MatTabsModule,
     FlexLayoutModule,
-    CommonPackModule
+    CommonPackModule,
+    QRCodeModule
   ]
 })
 export class AdminModule { }

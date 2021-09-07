@@ -39,9 +39,7 @@
             </div>
             <div fxFlex.lg="100%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xl="100%" fxFlex.xs="100%"
             fxLayoutAlign="end center">
-              <button mat-raised-button color="primary">
-                <mat-icon>qr_code_2</mat-icon>
-              </button>
+            <qr-code value="{{ getMainURL() }}/public/{{ store.id }}" ></qr-code>
             </div>
         </mat-expansion-panel>
     </mat-accordion>
