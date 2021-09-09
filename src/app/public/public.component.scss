@@ -15,6 +15,10 @@
   color: white;
 }
 
+::ng-deep .dark-theme .mat-tab-label .mat-tab-label-content {
+  color: black;
+}
+
 ::ng-deep .mat-form-field-infix {
   height: 25px;
   border-top: 6px;
