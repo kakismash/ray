@@ -38,9 +38,12 @@
                 <div>Acerca de: {{store.about}}</div>
             </div>
             <div fxFlex.lg="100%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xl="100%" fxFlex.xs="100%" fxLayoutAlign="end center">
-                <div id="qrCode" style="width: 100%; height: 100%;">
-                    <qr-code value="{{ getMainURL() }}/public/{{ store.id }}" (click)="onPrint(store)"></qr-code>
+                <div id="qrCode" style="display: none;">
+                    <qr-code [size]="400" value="{{ getMainURL() }}/public/{{ store.id }}" (click)="onPrint(store)"></qr-code>
                 </div>
+                <div>
+                  <qr-code value="{{ getMainURL() }}/public/{{ store.id }}" (click)="onPrint(store)"></qr-code>
+              </div>
             </div>
         </mat-expansion-panel>
     </mat-accordion>
