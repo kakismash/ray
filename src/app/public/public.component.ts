@@ -32,7 +32,7 @@ export class PublicComponent {
   }
 
   private setBackgroundImage(imagePath: string): void {
-    document.body.style.backgroundImage = 'url("../../assets/background.jpg")';
+    document.body.style.backgroundImage = 'url("' + imagePath + '")';
   }
 
 }
