@@ -114,30 +114,39 @@ export class StoreComponent implements OnInit {
         });
   }
 
-  onPrint(store: Store) {
-    let content        = '<html>';
-    content           += this.headerContent(store.logo);
+  onPrint(store: Store): void {
     const printContent = document.getElementById("qrCode");
     const WindowPrt    = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-    WindowPrt!.document.write(printContent!.innerHTML);
+    WindowPrt!.document.write(`<html>
+                                <head>
+                                    <style>
+                                        .logo-size {width: 100px; height: 100px; vertical-align: middle;}
+                                        .qr-size {width: 400px; height: 400px;}
+                                        .text {display: inline-block; font-family: 'Work Sans', sans-serif; font-size: 40px; font-weight: bold;}
+                                        .f-center {display: flex; justify-content: center;}
+                                        .s-center {padding: 10px;margin: 10px;}
+                                        .img-center {display: block; margin: auto; }
+                                    </style>
+                                </head>
+                                <body>
+                                    <div class="f-center">
+                                        <div class="s-center">
+                                            <img class="logo-size" src="${ store.logo }">
+                                            <p class="text">${ store.name }</p>
+                                        </div>
+                                    </div>
+                                    <div class="s-center">
+                                        ${ printContent!.innerHTML }
+                                    </div>
+
+                                </body>
+                            </html>
+                          `);
     WindowPrt!.document.close();
     WindowPrt!.focus();
     WindowPrt!.print();
     WindowPrt!.close();
   }
 
-  private headerContent(logoURL: string): string {
-    let content = '';
-    return content
-  }
-
-  private footerContent(): string {
-    let content = '';
-    content    += '</div>';
-    content    += '</div>';
-    content    += '</body>';
-    content    += '</html>';
-    return content;
-  }
 
 }
