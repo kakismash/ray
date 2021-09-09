@@ -121,7 +121,6 @@ export class StoreComponent implements OnInit {
                                 <head>
                                     <style>
                                         .logo-size {width: 100px; height: 100px; vertical-align: middle;}
-                                        .qr-size {width: 400px; height: 400px;}
                                         .text {display: inline-block; font-family: 'Work Sans', sans-serif; font-size: 40px; font-weight: bold;}
                                         .f-center {display: flex; justify-content: center;}
                                         .s-center {padding: 10px;margin: 10px;}

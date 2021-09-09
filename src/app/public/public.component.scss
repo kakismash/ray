@@ -10,7 +10,10 @@
   position: -webkit-sticky; /* macOS/iOS Safari */
 }
 
-
+::ng-deep .dark-theme .mat-toolbar {
+  background: #424242;
+  color: white;
+}
 
 ::ng-deep .mat-form-field-infix {
   height: 25px;
