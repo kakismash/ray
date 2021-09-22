@@ -3,6 +3,7 @@ import { BucketService } from './../../../../service/bucket.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/model/user.model';
 import { Component, OnInit, Inject } from '@angular/core';
+import { Image } from 'src/model/image.model';
 
 @Component({
   selector: 'app-user-dialog',
@@ -56,17 +57,21 @@ export class UserDialogComponent implements OnInit {
     this.dialogRef.close(this.user);
   }
 
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
+    if (this.user.image) {
+      await this.bucketService.deleteFile(this.user.image);
+    }
     this.uploadProgress = true;
     const file: File    = event.target.files[0];
     if (file) {
       this.user.image = file.name;
       const formData  = new FormData();
-      formData.append('upload', file);
+      formData.append('file', file);
       this.bucketService
-          .uploadFile(formData)
+          .uploadFile(formData, this.user.firstname + this.user.lastname)
           .subscribe(r => {
-            this.user.image     = r;
+            const image: Image = r;
+            this.user.image     = image.url;
             this.uploadProgress = false;
             console.log(this.user)
           }, err => {

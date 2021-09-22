@@ -1,10 +1,9 @@
 <mat-toolbar>
-  <div>
-    <img *ngIf="public.store.logo !== undefined" width="30%" [src]="public.store.logo">
-    <p class="text">{{ public.store.name }}</p>
-  </div>
-  <div fxFlex.lg="100%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xl="100%" fxFlex.xs="100%"
-  fxLayoutAlign="end center">
-    <theme-switch-component></theme-switch-component>
-  </div>
+    <div>
+        <img *ngIf="public.store.logo !== undefined" width="30%" [src]="public.store.logo">
+        <p class="text">{{ public.store.name }}</p>
+    </div>
+    <div fxFlex.lg="100%" fxFlex.md="70%" fxFlex.sm="70%" fxFlex.xl="100%" fxFlex.xs="100%" fxLayoutAlign="end center">
+        <theme-switch-component [color]="public.store.colorMode"></theme-switch-component>
+    </div>
 </mat-toolbar>

@@ -4,6 +4,8 @@ import { Store } from './../../../../model/store.model';
 import { CategoryService } from './../../../../service/category.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
+import { Image } from 'src/model/image.model';
+import { SessionStorageService } from 'src/service/session-storage.service';
 
 @Component({
   selector: 'app-category-dialog',
@@ -19,7 +21,8 @@ export class CategoryDialogComponent implements OnInit {
 
   constructor(public dialogRef:                     MatDialogRef<CategoryDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: {store: Store, category: Category},
-              public bucketService:                 BucketService) {
+              public readonly sessionService: SessionStorageService,
+              public readonly bucketService:                 BucketService) {
 
     Object.assign(this.store, data.store);
     if (data.category && data.category.id) {
@@ -38,27 +41,6 @@ export class CategoryDialogComponent implements OnInit {
     this.category.store = new Store();
     this.category.store = this.store;
     this.dialogRef.close(this.category);
-  }
-
-  onFileSelected(event: any) {
-    this.uploadProgress = true;
-    const file: File    = event.target.files[0];
-    if (file) {
-      this.category.image = file.name;
-      const formData      = new FormData();
-      formData.append('upload', file);
-      this.bucketService
-          .uploadFile(formData)
-          .subscribe(r => {
-            this.category.image = r;
-            this.uploadProgress = false;
-            console.log(this.category)
-          }, err => {
-            console.log(err);
-            this.uploadProgress = false;
-            this.category.image     = '';
-          });
-    }
   }
 
   cancelUpload() {

@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Image } from 'src/model/image.model';
 import { Store } from 'src/model/store.model';
 import { BucketService } from 'src/service/bucket.service';
 
@@ -34,6 +35,7 @@ export class StoreDialogComponent {
     this.store.logo     = '';
     this.store.phone    = '';
     this.store.background = '';
+    this.store.colorMode = 'oscuro';
   }
 
   onClose(): void {
@@ -44,7 +46,10 @@ export class StoreDialogComponent {
     this.dialogRef.close(this.store);
   }
 
-  onFileSelected(event: any, type: string) {
+  async onFileSelected(event: any, type: string, previusURL?: string) {
+    if (previusURL) {
+      await this.bucketService.deleteFile(previusURL);
+    }
     this.uploadProgress = true;
     const file: File    = event.target.files[0];
     if (file) {
@@ -54,15 +59,16 @@ export class StoreDialogComponent {
         this.store.background = file.name;
       }
       const formData  = new FormData();
-      formData.append('upload', file);
+      formData.append('file', file);
       this.bucketService
-          .uploadFile(formData)
+          .uploadFile(formData, this.store.name)
           .subscribe(r => {
+            const image: Image = r;
             if (type === 'logo') {
-              this.store.logo     = r;
+              this.store.logo     = image.url;
               this.uploadProgress = false;
             } else if (type === 'background') {
-              this.store.background = r;
+              this.store.background = image.url;
               this.uploadProgress   = false;
             }
           }, err => {
@@ -71,6 +77,10 @@ export class StoreDialogComponent {
             this.store.logo     = '';
           });
     }
+  }
+
+  onSelectionChange(event: any) {
+    this.store.colorMode = event.value;
   }
 
   cancelUpload() {

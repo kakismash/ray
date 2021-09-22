@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -7,6 +7,9 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./theme-switch-component.component.scss']
 })
 export class ThemeSwitchComponent  {
+
+  @Input() color!: string;
+
   private static readonly DARK_THEME_CLASS = 'dark-theme';
   private static readonly DARK_THEME_LIGHT = 'light';
   private static readonly DARK_THEME_DARK  = 'dark';
@@ -15,9 +18,19 @@ export class ThemeSwitchComponent  {
 
   public theme: string;
 
+
+
   constructor(@Inject(DOCUMENT) private document: Document) {
       this.theme = this.document.documentElement.classList.contains(ThemeSwitchComponent.DARK_THEME_CLASS) ? ThemeSwitchComponent.DARK_THEME_DARK : ThemeSwitchComponent.DARK_THEME_LIGHT;
       this.selectDarkTheme();
+  }
+
+  ngOnInit(): void {
+    if (this.color && this.color === 'claro') {
+      this.selectLightTheme();
+    } else {
+      this.selectDarkTheme();
+    }
   }
 
   private selectDarkTheme(): void {

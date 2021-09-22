@@ -26,7 +26,7 @@
             <div class="full-width" style="display: flex;">
                 <img style="max-width: 70%; max-height: 100px;" *ngIf="user.image" [src]="user.image" alt="">
                 <h5 *ngIf="!user.image">No file uploaded yet.</h5>
-                <button style="margin: auto;" mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                <button [disabled]="user.firstname === undefined || user.lastname === undefined" style="margin: auto;" mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
                   <mat-icon>attach_file</mat-icon>
               </button>
             </div>

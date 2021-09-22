@@ -10,7 +10,7 @@
         </mat-form-field>
 
         <div class="full-width">
-            <input name="storeLogo" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event, 'logo')" #fileUpload>
+            <input name="storeLogo" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event, 'logo', store.logo ? store.logo : undefined )" #fileUpload>
             <div class="full-width" style="display: flex;">
                 <img style="max-width: 70%; max-height: 100px;" *ngIf="store.logo" [src]="store.logo" alt="" />
                 <h5 *ngIf="!store.logo">No file uploaded yet.</h5>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="full-width">
-            <input name="storeBackground" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event, 'background')" #fileUploadBackground>
+            <input name="storeBackground" type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event, 'background', store.background ? store.background : undefined)" #fileUploadBackground>
             <div class="full-width" style="display: flex;">
                 <img style="max-width: 70%; max-height: 100px;" *ngIf="store.background" [src]="store.background" alt="" />
                 <h5 *ngIf="!store.background">No file uploaded yet.</h5>
@@ -48,6 +48,13 @@
         </mat-form-field>
         <mat-form-field class="full-width">
             <input name="storeFacebook" matInput placeholder="Facebook de la Tienda" [(ngModel)]="store.facebook">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Seleccione color de la tienda</mat-label>
+            <mat-select [(value)]="store.colorMode" (selectionChange)="onSelectionChange($event)">
+                <mat-option value="claro">Claro</mat-option>
+                <mat-option value="oscuro">Oscuro</mat-option>
+            </mat-select>
         </mat-form-field>
     </form>
 </div>

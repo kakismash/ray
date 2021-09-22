@@ -3,6 +3,8 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Item } from 'src/model/item.model';
 import { BucketService } from 'src/service/bucket.service';
+import { Image } from 'src/model/image.model';
+import { SessionStorageService } from 'src/service/session-storage.service';
 
 @Component({
   selector: 'app-item-dialog',
@@ -17,7 +19,8 @@ export class ItemDialogComponent {
 
   constructor(public dialogRef:                     MatDialogRef<ItemDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: {category: Category, item: Item},
-              public bucketService:                 BucketService) {
+              public readonly sessionService: SessionStorageService,
+              public readonly bucketService:                 BucketService) {
 
     this.initItem();
 
@@ -46,17 +49,21 @@ export class ItemDialogComponent {
     this.dialogRef.close(this.item);
   }
 
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
+    if (this.item.image) {
+      await this.bucketService.deleteFile(this.item.image);
+    }
     this.uploadProgress = true;
     const file: File    = event.target.files[0];
     if (file) {
       this.item.image = file.name;
       const formData  = new FormData();
-      formData.append('upload', file);
+      formData.append('file', file);
       this.bucketService
-          .uploadFile(formData)
+          .uploadFile(formData, this.sessionService.loadStore().name)
           .subscribe(r => {
-            this.item.image     = r;
+            const image: Image = r;
+            this.item.image     = image.url;
             this.uploadProgress = false;
             console.log(this.item.image)
           }, err => {
